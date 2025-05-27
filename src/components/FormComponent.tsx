@@ -10,8 +10,28 @@ interface FormField {
   required?: boolean
 }
 
+interface Form {
+  id: string
+  title: string
+  fields: FormField[]
+  confirmationMessage?: {
+    root: {
+      type: string
+      children: Array<{
+        type: string
+        version: number
+        [key: string]: unknown
+      }>
+      direction: ('ltr' | 'rtl') | null
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
+      indent: number
+      version: number
+    }
+  }
+}
+
 const FormComponent = ({ formId }: { formId: string }) => {
-  const [cmsForms, setCmsForms] = useState<any>(null)
+  const [cmsForms, setCmsForms] = useState<Form | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<boolean>(false)
