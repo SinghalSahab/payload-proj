@@ -19,7 +19,7 @@ const FormComponent = ({ formId }: { formId: string }) => {
 
   useEffect(() => {
     setIsLoading(true)
-    fetch(`http://localhost:3001/api/forms/${formId}`)
+    fetch(`/api/forms/${formId}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok')
