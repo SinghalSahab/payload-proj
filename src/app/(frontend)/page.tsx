@@ -1,12 +1,10 @@
 import { headers as getHeaders } from 'next/headers.js'
-import Image from 'next/image'
 import { getPayload } from 'payload'
 import React from 'react'
 import { fileURLToPath } from 'url'
 
 import config from '@/payload.config'
 import './styles.css'
-import { div } from 'three/tsl'
 import FormComponent from '@/components/FormComponent'
 
 export default async function HomePage() {
@@ -15,12 +13,27 @@ export default async function HomePage() {
   const payload = await getPayload({ config: payloadConfig })
   const { user } = await payload.auth({ headers })
 
-  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
-
   return (
-   <div>
-    <h1>Contact Form</h1>
-    <FormComponent formId="1" />
-   </div>
+    <div className="page-container">
+      <div className="content-wrapper">
+        <div className="left-column">
+          <h1 className="main-title">Get in Touch with Our Experts</h1>
+          <p className="subtitle">We're here to help you build something amazing</p>
+          <div className="contact-info">
+            <p>Have questions about our services? Want to discuss your project?</p>
+            <p>Our team of experts is ready to assist you with:</p>
+            <ul>
+              <li>Custom solutions tailored to your needs</li>
+              <li>Technical consultation and support</li>
+              <li>Project planning and implementation</li>
+              <li>24/7 customer service</li>
+            </ul>
+          </div>
+        </div>
+        <div className="right-column">
+          <FormComponent formId="1" />
+        </div>
+      </div>
+    </div>
   )
 }
