@@ -11,5 +11,6 @@ export const Tenants: CollectionConfig = {
       type: 'text',
       required: true,
     },
+    
   ],
 }
